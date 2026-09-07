@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
 
-name 'qb-weathersync'
+name 'qbweathersync'
 author 'qbcore2'
 version '1.0.0'
 description 'Server-authoritative weather, clock, blackout, and environmental-level sync'

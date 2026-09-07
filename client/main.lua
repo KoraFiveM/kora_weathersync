@@ -69,7 +69,7 @@ AddStateBagChangeHandler('qbweathersync', nil, function(_, _, value)
     applyState(value, currentState ~= nil)
 end)
 
-RegisterNetEvent('qb-weathersync:client:state', function(state)
+RegisterNetEvent('qbweathersync:client:state', function(state)
     applyState(state, currentState ~= nil)
 end)
 

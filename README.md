@@ -1,4 +1,4 @@
-# qb-weathersync
+# qbweathersync
 
 Server-authoritative weather, time, blackout, and client environmental effects
 for the qblib test server. It follows the state-sync approach from

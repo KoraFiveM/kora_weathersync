@@ -6,7 +6,7 @@ local permissionOptions = {
     end,
     notify = function(src, message, type_)
         if src == 0 then
-            print(('[qb-weathersync] %s'):format(message))
+            print(('[qbweathersync] %s'):format(message))
         else
             QB.notify.send(src, { title = 'Weather', message = message, type = type_ })
         end

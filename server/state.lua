@@ -133,19 +133,19 @@ exports('getState', WeatherSync.getState)
 
 -- Compatibility events are safe for server resources and the console, but a
 -- connected client cannot use an event to seize control of world state.
-RegisterNetEvent('qb-weathersync:server:setWeather', function(weatherType)
+RegisterNetEvent('qbweathersync:server:setWeather', function(weatherType)
     if source and source > 0 then return end
     WeatherSync.setWeather(weatherType)
 end)
 
-RegisterNetEvent('qb-weathersync:server:setTime', function(hour, minute)
+RegisterNetEvent('qbweathersync:server:setTime', function(hour, minute)
     if source and source > 0 then return end
     WeatherSync.setTime(hour, minute)
 end)
 
-RegisterNetEvent('qb-weathersync:server:requestStateSync', function()
+RegisterNetEvent('qbweathersync:server:requestStateSync', function()
     if not source or source <= 0 then return end
-    TriggerClientEvent('qb-weathersync:client:state', source, WeatherSync.getState())
+    TriggerClientEvent('qbweathersync:client:state', source, WeatherSync.getState())
 end)
 
 CreateThread(function()

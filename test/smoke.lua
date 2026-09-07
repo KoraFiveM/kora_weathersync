@@ -27,7 +27,7 @@ function CreateThread() end
 function AddEventHandler() end
 function RegisterNetEvent() end
 function TriggerClientEvent() end
-function GetCurrentResourceName() return 'qb-weathersync' end
+function GetCurrentResourceName() return 'qbweathersync' end
 
 QB = {
     commands = { add = function(name, _, _, _, handler) commands[name] = handler end },
