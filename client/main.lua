@@ -4,7 +4,7 @@ local transitionRevision = -1
 local function numberInRange(value, minimum, maximum, fallback)
     value = tonumber(value)
     if not value then return fallback end
-    return math.max(minimum, math.min(maximum, value))
+    return QB.util.clamp(value, minimum, maximum)
 end
 
 local function effectsFor(weatherType)
