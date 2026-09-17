@@ -62,4 +62,11 @@ Config.timePresets = {
 }
 
 -- Registers this resource-owned configuration with qblib without changing its public Config table.
-if QB and QB.config and QB.config.adopt then Config = QB.config.adopt(Config) end
+if QB and QB.config and QB.config.adopt then
+    Config.startingWeather = QB.config.enum(Config.startingWeather, {
+        label = 'Starting weather',
+        description = 'Selects the weather state qbweathersync applies when the resource starts before any scheduled transition occurs. Only weather names from the authored weather catalogue can be saved.',
+        options = Config.weatherTypes,
+    })
+    Config = QB.config.adopt(Config)
+end
