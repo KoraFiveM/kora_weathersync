@@ -4,7 +4,9 @@ local transitionRevision = -1
 local function numberInRange(value, minimum, maximum, fallback)
     value = tonumber(value)
     if not value then return fallback end
-    return QB.util.clamp(value, minimum, maximum)
+    assert(value == value and value ~= math.huge and value ~= -math.huge,
+        'QB.util.clamp requires finite bounds where min is at most max.')
+    return math.max(minimum, math.min(maximum, value))
 end
 
 local function effectsFor(weatherType)
