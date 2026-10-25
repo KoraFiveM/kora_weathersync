@@ -1,5 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
+
+provide 'qb-weathersync'
 lua54 'yes'
 
 name 'qbweathersync'

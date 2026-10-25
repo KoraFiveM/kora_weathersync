@@ -26,3 +26,5 @@ All commands require the configured `qbcore.admin` tier (console is allowed).
 `Config.weatherEffects` maps a weather type to `rainLevel`, `snowLevel`,
 `gravityLevel`, and `snowTrails`. `BLIZZARD` ships with low gravity as a
 deliberate event-style effect; set its `gravityLevel` to `0` for ordinary snow.
+
+The legacy server export `qb-weathersync:setBlackout(enabled)` resolves to the same authoritative setter as the native export, including nil-toggle behavior and GlobalState publication. The provided identity covers this tested export only; other stock events/configuration are separate compatibility contracts.

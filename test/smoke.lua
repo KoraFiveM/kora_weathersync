@@ -24,7 +24,8 @@ function exports(name, fn) registeredExports[name] = fn end
 function GetGameTimer() return 1000 end
 function Wait() end
 function CreateThread() end
-function AddEventHandler() end
+local events = {}
+function AddEventHandler(name, handler) events[name] = handler end
 function RegisterNetEvent() end
 function TriggerClientEvent() end
 function GetCurrentResourceName() return 'qbweathersync' end
@@ -35,6 +36,7 @@ QB = {
     notify = { send = function() end },
 }
 
+QB.compat = dofile('../qblib/compat/provider.lua')()
 dofile('config.lua')
 dofile('server/state.lua')
 dofile('server/commands.lua')
@@ -84,6 +86,18 @@ test('the time command accepts configured presets for qbadmin menu compatibility
     local hour, minute = registeredExports.getTime()
     equal(hour, Config.timePresets.morning.hour, 'preset hour')
     equal(minute, Config.timePresets.morning.minute, 'preset minute')
+end)
+
+test('legacy blackout export publishes through the same authoritative setter', function()
+    local legacy
+    events['__cfx_export_qb-weathersync_setBlackout'](function(fn) legacy = fn end)
+    equal(legacy, registeredExports.setBlackout, 'same handler')
+    local previous = GlobalState.qbweathersync
+    equal(legacy(false), false, 'disable result')
+    equal(GlobalState.qbweathersync.blackout, false, 'replicated off')
+    equal(GlobalState.qbweathersync.revision, previous.revision + 1, 'publishes fresh revision')
+    equal(legacy(), true, 'toggle result')
+    equal(GlobalState.qbweathersync.blackout, true, 'replicated on')
 end)
 
 print(('-- %d passed, %d failed --'):format(passed, failed))
