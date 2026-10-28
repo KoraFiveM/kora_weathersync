@@ -28,7 +28,7 @@ local events = {}
 function AddEventHandler(name, handler) events[name] = handler end
 function RegisterNetEvent() end
 function TriggerClientEvent() end
-function GetCurrentResourceName() return 'qbweathersync' end
+function GetCurrentResourceName() return 'kora_weathersync' end
 
 QB = {
     commands = { add = function(name, _, _, _, handler) commands[name] = handler end },
@@ -36,7 +36,7 @@ QB = {
     notify = { send = function() end },
 }
 
-QB.compat = dofile('../qblib/compat/provider.lua')()
+QB.compat = dofile('../kora_lib/compat/provider.lua')()
 dofile('config.lua')
 dofile('server/state.lua')
 dofile('server/commands.lua')

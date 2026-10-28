@@ -75,9 +75,9 @@ RegisterNetEvent('qbweathersync:client:state', function(state)
     applyState(state, currentState ~= nil)
 end)
 
--- qbadmin reads this at menu-open time.  Exporting the source list keeps its
+-- kora_admin reads this at menu-open time.  Exporting the source list keeps its
 -- selector aligned with this resource's config (including snow-only/event
--- weather) without making qbadmin start-order dependent on this resource.
+-- weather) without making kora_admin start-order dependent on this resource.
 exports('getWeatherTypes', function()
     return Config.weatherTypes
 end)

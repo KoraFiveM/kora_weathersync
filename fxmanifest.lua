@@ -4,14 +4,16 @@ game 'gta5'
 provide 'qb-weathersync'
 lua54 'yes'
 
-name 'qbweathersync'
+name 'kora_weathersync'
+-- Keep the legacy resource name resolvable for exports['qbweathersync'] callers.
+provide 'qbweathersync'
 author 'qbcore2'
 version '1.0.0'
 description 'Server-authoritative weather, clock, blackout, and environmental-level sync'
 
-dependency 'qblib'
+dependency 'kora_lib'
 
-shared_script '@qblib/init.lua'
+shared_script '@kora_lib/init.lua'
 shared_script 'config.lua'
 
 server_scripts {

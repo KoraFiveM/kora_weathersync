@@ -49,8 +49,8 @@ Config.weatherEffects = {
 }
 
 Config.command = {
-    permission = 'admin', -- qblib ACE/Discord permission tier required for world controls
-    levels = { 'god', 'admin', 'mod', 'user' }, -- ranked levels understood by qblib permissions
+    permission = 'admin', -- kora_lib ACE/Discord permission tier required for world controls
+    levels = { 'god', 'admin', 'mod', 'user' }, -- ranked levels understood by kora_lib permissions
     permissionPrefix = 'qbcore', -- matches this server's `qbcore.admin` ACE configuration
 }
 
@@ -61,7 +61,7 @@ Config.timePresets = {
     night = { hour = 23, minute = 0 },
 }
 
--- Registers this resource-owned configuration with qblib without changing its public Config table.
+-- Registers this resource-owned configuration with kora_lib without changing its public Config table.
 if QB and QB.config and QB.config.adopt then
     Config.startingWeather = QB.config.enum(Config.startingWeather, {
         label = 'Starting weather',
