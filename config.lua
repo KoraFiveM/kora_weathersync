@@ -65,7 +65,7 @@ Config.timePresets = {
 if QB and QB.config and QB.config.adopt then
     Config.startingWeather = QB.config.enum(Config.startingWeather, {
         label = 'Starting weather',
-        description = 'Selects the weather state qbweathersync applies when the resource starts before any scheduled transition occurs. Only weather names from the authored weather catalogue can be saved.',
+        description = 'Selects the weather state kora_weathersync applies when the resource starts before any scheduled transition occurs. Only weather names from the authored weather catalogue can be saved.',
         options = Config.weatherTypes,
     })
     Config = QB.config.adopt(Config)
