@@ -21,7 +21,10 @@ end
 
 function WeatherSync.publish()
     WeatherSync.state.revision = WeatherSync.state.revision + 1
-    GlobalState.qbweathersync = copyState()
+    local snapshot = copyState()
+    GlobalState.kora_weathersync = snapshot
+    -- Keep the legacy key because older resources still read it directly.
+    GlobalState.qbweathersync = snapshot
 end
 
 local function validInteger(value, minimum, maximum)
@@ -134,19 +137,26 @@ exports('getState', WeatherSync.getState)
 
 -- Compatibility events are safe for server resources and the console, but a
 -- connected client cannot use an event to seize control of world state.
-RegisterNetEvent('qbweathersync:server:setWeather', function(weatherType)
+-- Every event is registered under its legacy qbweathersync: name too, because
+-- older resources still trigger those names.
+local function registerEvent(name, handler)
+    RegisterNetEvent('kora_weathersync:' .. name, handler)
+    RegisterNetEvent('qbweathersync:' .. name, handler)
+end
+
+registerEvent('server:setWeather', function(weatherType)
     if source and source > 0 then return end
     WeatherSync.setWeather(weatherType)
 end)
 
-RegisterNetEvent('qbweathersync:server:setTime', function(hour, minute)
+registerEvent('server:setTime', function(hour, minute)
     if source and source > 0 then return end
     WeatherSync.setTime(hour, minute)
 end)
 
-RegisterNetEvent('qbweathersync:server:requestStateSync', function()
+registerEvent('server:requestStateSync', function()
     if not source or source <= 0 then return end
-    TriggerClientEvent('qbweathersync:client:state', source, WeatherSync.getState())
+    TriggerClientEvent('kora_weathersync:client:state', source, WeatherSync.getState())
 end)
 
 CreateThread(function()
@@ -174,5 +184,7 @@ CreateThread(function()
 end)
 
 AddEventHandler('onResourceStop', function(resource)
-    if resource == GetCurrentResourceName() then GlobalState.qbweathersync = nil end
+    if resource ~= GetCurrentResourceName() then return end
+    GlobalState.kora_weathersync = nil
+    GlobalState.qbweathersync = nil
 end)

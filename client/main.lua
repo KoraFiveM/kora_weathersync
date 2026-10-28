@@ -66,14 +66,18 @@ local function applyState(state, blendWeather)
     end
 end
 
-AddStateBagChangeHandler('qbweathersync', nil, function(_, _, value)
+AddStateBagChangeHandler('kora_weathersync', nil, function(_, _, value)
     if value == nil then return end
     applyState(value, currentState ~= nil)
 end)
 
-RegisterNetEvent('qbweathersync:client:state', function(state)
+local function onState(state)
     applyState(state, currentState ~= nil)
-end)
+end
+
+RegisterNetEvent('kora_weathersync:client:state', onState)
+-- Keep the legacy event because older resources still trigger it directly.
+RegisterNetEvent('qbweathersync:client:state', onState)
 
 -- kora_admin reads this at menu-open time.  Exporting the source list keeps its
 -- selector aligned with this resource's config (including snow-only/event
@@ -84,7 +88,7 @@ end)
 
 CreateThread(function()
     while currentState == nil do
-        local state = GlobalState.qbweathersync
+        local state = GlobalState.kora_weathersync
         if state then applyState(state, false) end
         Wait(1000)
     end

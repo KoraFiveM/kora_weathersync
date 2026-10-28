@@ -42,9 +42,10 @@ dofile('server/state.lua')
 dofile('server/commands.lua')
 
 test('starts with a replicated world snapshot', function()
-    equal(GlobalState.qbweathersync.weather, Config.startingWeather, 'starting weather')
-    equal(GlobalState.qbweathersync.hour, Config.startingTime.hour, 'starting hour')
-    equal(GlobalState.qbweathersync.revision, 1, 'initial publish revision')
+    equal(GlobalState.kora_weathersync.weather, Config.startingWeather, 'starting weather')
+    equal(GlobalState.kora_weathersync.hour, Config.startingTime.hour, 'starting hour')
+    equal(GlobalState.kora_weathersync.revision, 1, 'initial publish revision')
+    equal(GlobalState.qbweathersync, GlobalState.kora_weathersync, 'legacy state key mirrors the new one')
 end)
 
 test('weather is normalized and invalid values are rejected', function()
@@ -92,12 +93,12 @@ test('legacy blackout export publishes through the same authoritative setter', f
     local legacy
     events['__cfx_export_qb-weathersync_setBlackout'](function(fn) legacy = fn end)
     equal(legacy, registeredExports.setBlackout, 'same handler')
-    local previous = GlobalState.qbweathersync
+    local previous = GlobalState.kora_weathersync
     equal(legacy(false), false, 'disable result')
-    equal(GlobalState.qbweathersync.blackout, false, 'replicated off')
-    equal(GlobalState.qbweathersync.revision, previous.revision + 1, 'publishes fresh revision')
+    equal(GlobalState.kora_weathersync.blackout, false, 'replicated off')
+    equal(GlobalState.kora_weathersync.revision, previous.revision + 1, 'publishes fresh revision')
     equal(legacy(), true, 'toggle result')
-    equal(GlobalState.qbweathersync.blackout, true, 'replicated on')
+    equal(GlobalState.kora_weathersync.blackout, true, 'replicated on')
 end)
 
 print(('-- %d passed, %d failed --'):format(passed, failed))
