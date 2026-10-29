@@ -45,7 +45,6 @@ test('starts with a replicated world snapshot', function()
     equal(GlobalState.kora_weathersync.weather, Config.startingWeather, 'starting weather')
     equal(GlobalState.kora_weathersync.hour, Config.startingTime.hour, 'starting hour')
     equal(GlobalState.kora_weathersync.revision, 1, 'initial publish revision')
-    equal(GlobalState.qbweathersync, GlobalState.kora_weathersync, 'legacy state key mirrors the new one')
 end)
 
 test('weather is normalized and invalid values are rejected', function()

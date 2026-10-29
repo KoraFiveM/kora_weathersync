@@ -76,8 +76,6 @@ local function onState(state)
 end
 
 RegisterNetEvent('kora_weathersync:client:state', onState)
--- Keep the legacy event because older resources still trigger it directly.
-RegisterNetEvent('qbweathersync:client:state', onState)
 
 -- kora_admin reads this at menu-open time.  Exporting the source list keeps its
 -- selector aligned with this resource's config (including snow-only/event

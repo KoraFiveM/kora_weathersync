@@ -3,7 +3,7 @@
 Server-authoritative weather, time, blackout, and client environmental effects
 for the kora_lib test server. It follows the state-sync approach from
 [QBCore-Remastered/qb-weathersync](https://github.com/QBCore-Remastered/qb-weathersync/),
-but uses a single `GlobalState.kora_weathersync` (also published as `GlobalState.qbweathersync` for older resources) snapshot so late joiners and
+but uses a single `GlobalState.kora_weathersync` snapshot so late joiners and
 resource restarts receive the active world immediately.
 
 ## Commands
