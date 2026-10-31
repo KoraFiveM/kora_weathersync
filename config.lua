@@ -62,11 +62,11 @@ Config.timePresets = {
 }
 
 -- Registers this resource-owned configuration with kora_lib without changing its public Config table.
-if QB and QB.config and QB.config.adopt then
-    Config.startingWeather = QB.config.enum(Config.startingWeather, {
+if Kora and Kora.config and Kora.config.adopt then
+    Config.startingWeather = Kora.config.enum(Config.startingWeather, {
         label = 'Starting weather',
         description = 'Selects the weather state kora_weathersync applies when the resource starts before any scheduled transition occurs. Only weather names from the authored weather catalogue can be saved.',
         options = Config.weatherTypes,
     })
-    Config = QB.config.adopt(Config)
+    Config = Kora.config.adopt(Config)
 end

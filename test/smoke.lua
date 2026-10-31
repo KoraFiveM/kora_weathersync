@@ -30,13 +30,13 @@ function RegisterNetEvent() end
 function TriggerClientEvent() end
 function GetCurrentResourceName() return 'kora_weathersync' end
 
-QB = {
+Kora = {
     commands = { add = function(name, _, _, _, handler) commands[name] = handler end },
     permissions = { hasLevel = function() return true end },
     notify = { send = function() end },
 }
 
-QB.compat = dofile('../kora_lib/compat/provider.lua')()
+Kora.compat = dofile('../kora_lib/compat/provider.lua')()
 dofile('config.lua')
 dofile('server/state.lua')
 dofile('server/commands.lua')
