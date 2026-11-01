@@ -128,30 +128,74 @@ exports('getTimeFrozen', function() return WeatherSync.state.timeFrozen end)
 exports('setDynamicWeather', WeatherSync.setDynamicWeather)
 exports('getDynamicWeather', function() return WeatherSync.state.dynamicWeather end)
 exports('setBlackout', WeatherSync.setBlackout)
-Kora.compat.provideExport('qb-weathersync', 'setBlackout', WeatherSync.setBlackout)
 exports('getBlackout', function() return WeatherSync.state.blackout end)
 exports('nextWeatherStage', WeatherSync.nextWeatherStage)
 exports('getState', WeatherSync.getState)
 
--- Compatibility events are safe for server resources and the console, but a
--- connected client cannot use an event to seize control of world state.
-local function registerEvent(name, handler)
-    RegisterNetEvent('kora_weathersync:' .. name, handler)
+local function legacyTime(hour, minute)
+    local legacyHour, legacyMinute = tonumber(hour), tonumber(minute) or 0
+    if not legacyHour or legacyHour < 0 or legacyHour > 24 then return false end
+    legacyHour, legacyMinute = math.floor(legacyHour), math.floor(legacyMinute)
+    if legacyMinute < 0 then return false end
+    return WeatherSync.setTime(legacyHour < 24 and legacyHour or 0, legacyMinute < 60 and legacyMinute or 0)
 end
 
-registerEvent('server:setWeather', function(weatherType)
-    if source and source > 0 then return end
-    WeatherSync.setWeather(weatherType)
-end)
+local legacyExports = {
+    nextWeatherStage = WeatherSync.nextWeatherStage,
+    setWeather = function(weatherType) return (WeatherSync.setWeather(weatherType)) end,
+    setTime = function(hour, minute) return (legacyTime(hour, minute)) end,
+    setBlackout = WeatherSync.setBlackout,
+    setTimeFreeze = WeatherSync.setTimeFrozen,
+    setDynamicWeather = WeatherSync.setDynamicWeather,
+    getBlackoutState = function() return WeatherSync.state.blackout end,
+    getTimeFreezeState = function() return WeatherSync.state.timeFrozen end,
+    getWeatherState = function() return WeatherSync.state.weather end,
+    getDynamicWeather = function() return WeatherSync.state.dynamicWeather end,
+    getTime = function() return WeatherSync.state.hour, WeatherSync.state.minute end,
+}
+for name, handler in pairs(legacyExports) do
+    Kora.compat.provideExport('qb-weathersync', name, handler)
+end
 
-registerEvent('server:setTime', function(hour, minute)
-    if source and source > 0 then return end
-    WeatherSync.setTime(hour, minute)
-end)
+local function originOf(value)
+    return tonumber(value) or 0
+end
 
-registerEvent('server:requestStateSync', function()
-    if not source or source <= 0 then return end
-    TriggerClientEvent('kora_weathersync:client:state', source, WeatherSync.getState())
+local function serverOnly(name, handler)
+    RegisterNetEvent(name, function(...)
+        if originOf(source) > 0 then return end
+        handler(...)
+    end)
+end
+
+serverOnly('kora_weathersync:server:setWeather', WeatherSync.setWeather)
+serverOnly('kora_weathersync:server:setTime', WeatherSync.setTime)
+serverOnly('qb-weathersync:server:setWeather', legacyExports.setWeather)
+serverOnly('qb-weathersync:server:setTime', legacyExports.setTime)
+serverOnly('qb-weathersync:server:toggleBlackout', WeatherSync.setBlackout)
+serverOnly('qb-weathersync:server:toggleFreezeTime', WeatherSync.setTimeFrozen)
+serverOnly('qb-weathersync:server:toggleDynamicWeather', WeatherSync.setDynamicWeather)
+
+local syncCooldownMs = 2000
+local lastSyncRequest = {}
+
+local function requestStateSync()
+    local player = originOf(source)
+    if player <= 0 then
+        TriggerClientEvent('kora_weathersync:client:state', -1, WeatherSync.getState())
+        return
+    end
+    local now = GetGameTimer()
+    if lastSyncRequest[player] and now - lastSyncRequest[player] < syncCooldownMs then return end
+    lastSyncRequest[player] = now
+    TriggerClientEvent('kora_weathersync:client:state', player, WeatherSync.getState())
+end
+
+RegisterNetEvent('kora_weathersync:server:requestStateSync', requestStateSync)
+RegisterNetEvent('qb-weathersync:server:RequestStateSync', requestStateSync)
+
+AddEventHandler('playerDropped', function()
+    lastSyncRequest[originOf(source)] = nil
 end)
 
 CreateThread(function()
