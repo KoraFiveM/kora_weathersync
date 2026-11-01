@@ -73,11 +73,9 @@ AddStateBagChangeHandler('kora_weathersync', nil, function(_, _, value)
     applyState(value, currentState ~= nil)
 end)
 
-local function onState(state)
+RegisterNetEvent('kora_weathersync:client:state', function(state)
     applyState(state, currentState ~= nil)
-end
-
-RegisterNetEvent('kora_weathersync:client:state', onState)
+end)
 
 RegisterNetEvent('qb-weathersync:client:DisableSync', function()
     syncSuspended = true

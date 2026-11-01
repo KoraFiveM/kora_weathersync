@@ -21,8 +21,7 @@ end
 
 function WeatherSync.publish()
     WeatherSync.state.revision = WeatherSync.state.revision + 1
-    local snapshot = copyState()
-    GlobalState.kora_weathersync = snapshot
+    GlobalState.kora_weathersync = copyState()
 end
 
 local function validInteger(value, minimum, maximum)
