@@ -24,7 +24,8 @@ function exports(name, fn) registeredExports[name] = fn end
 local now = 1000
 function GetGameTimer() return now end
 function Wait() end
-function CreateThread() end
+local threadCount = 0
+function CreateThread() threadCount = threadCount + 1 end
 local events = {}
 function AddEventHandler(name, handler) events[name] = handler end
 local netHandlers, sent = {}, {}
@@ -37,6 +38,16 @@ Kora = {
     permissions = { hasLevel = function() return true end },
     notify = { send = function() end },
 }
+local timeouts, nextTimer = {}, 0
+Kora.timers = {
+    setTimeout = function(fn, delay) nextTimer = nextTimer + 1; timeouts[nextTimer] = { fn = fn, delay = delay }; return nextTimer end,
+    clearTimeout = function(id) local live = timeouts[id] ~= nil; timeouts[id] = nil; return live end,
+}
+local function liveTimers()
+    local list = {}
+    for id, timer in pairs(timeouts) do list[#list + 1] = { id = id, fn = timer.fn, delay = timer.delay } end
+    return list
+end
 
 Kora.compat = dofile('../kora_lib/compat/provider.lua')()
 dofile('config.lua')
@@ -167,6 +178,29 @@ test('RequestStateSync replies to the caller and is rate limited', function()
     netHandlers['qb-weathersync:server:RequestStateSync']()
     equal(sent[3].target, -1, 'server origin broadcasts')
     source = nil
+end)
+
+test('dynamic weather uses one rescheduled timeout instead of a 1 s poll (F#269)', function()
+    equal(threadCount, 1, 'only the game-minute clock thread is started')
+    registeredExports.setDynamicWeather(true)
+    local live = liveTimers()
+    equal(#live, 1, 'one pending weather timeout')
+    equal(live[1].delay, WeatherSync.weatherInterval, 'it fires after the configured interval')
+
+    now = now + 5000
+    registeredExports.setWeather('clouds')
+    live = liveTimers()
+    equal(#live, 1, 'a manual change replaces the pending timeout')
+    equal(live[1].delay, WeatherSync.weatherInterval, 'and restarts the interval')
+
+    local before = WeatherSync.state.revision
+    timeouts[live[1].id] = nil -- a fired timeout is no longer pending
+    live[1].fn()
+    equal(WeatherSync.state.revision > before, true, 'firing advances the weather stage')
+    equal(#liveTimers(), 1, 'and arms the next stage')
+
+    registeredExports.setDynamicWeather(false)
+    equal(#liveTimers(), 0, 'disabling dynamic weather cancels the timeout')
 end)
 
 print(('-- %d passed, %d failed --'):format(passed, failed))
