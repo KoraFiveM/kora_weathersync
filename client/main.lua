@@ -2,22 +2,33 @@ local currentState
 local transitionRevision = -1
 local syncSuspended = false
 
-local function numberInRange(value, minimum, maximum, fallback)
+-- Effect levels are validated once at load (F#271), so the per-state apply path
+-- never asserts and never allocates. A non-numeric or non-finite value falls
+-- back to the default with one warning instead of erroring inside a thread.
+local function level(weatherType, key, value, minimum, maximum, fallback)
+    if value == nil then return fallback end
     value = tonumber(value)
-    if not value then return fallback end
-    assert(value == value and value ~= math.huge and value ~= -math.huge,
-        'Kora.util.clamp requires finite bounds where min is at most max.')
-    return math.max(minimum, math.min(maximum, value))
+    if not Kora.util.isFiniteNumber(value) then
+        print(('^3[kora_weathersync] Config.weatherEffects.%s.%s must be a finite number; using %s.^7')
+            :format(weatherType, key, fallback))
+        return fallback
+    end
+    return Kora.util.clamp(value, minimum, maximum)
+end
+
+local defaultEffects = { rainLevel = 0.0, snowLevel = 0.0, gravityLevel = 0, snowTrails = false }
+local effectsByWeather = {}
+for weatherType, configured in pairs(Config.weatherEffects or {}) do
+    effectsByWeather[weatherType] = {
+        rainLevel = level(weatherType, 'rainLevel', configured.rainLevel, 0.0, 1.0, 0.0),
+        snowLevel = level(weatherType, 'snowLevel', configured.snowLevel, 0.0, 1.0, 0.0),
+        gravityLevel = math.floor(level(weatherType, 'gravityLevel', configured.gravityLevel, 0, 3, 0)),
+        snowTrails = configured.snowTrails == true,
+    }
 end
 
 local function effectsFor(weatherType)
-    local configured = Config.weatherEffects[weatherType] or {}
-    return {
-        rainLevel = numberInRange(configured.rainLevel, 0.0, 1.0, 0.0),
-        snowLevel = numberInRange(configured.snowLevel, 0.0, 1.0, 0.0),
-        gravityLevel = math.floor(numberInRange(configured.gravityLevel, 0, 3, 0)),
-        snowTrails = configured.snowTrails == true,
-    }
+    return effectsByWeather[weatherType] or defaultEffects
 end
 
 local function applyLevels(state)
@@ -43,6 +54,7 @@ local function persistWeather(weatherType)
             SetWeatherTypePersist(weatherType)
             SetWeatherTypeNow(weatherType)
             SetWeatherTypeNowPersist(weatherType)
+            applyLevels(currentState)
         end
     end)
 end
@@ -142,11 +154,11 @@ CreateThread(function()
 
     -- NetworkOverrideClockTime is an override rather than a running clock.
     -- Reapplying it once a second keeps every client aligned between server
-    -- minute updates, including after a player briefly loses scope.
+    -- minute updates, including after a player briefly loses scope. Weather
+    -- levels only change with the state, so applyState sets them (F#268).
     while true do
         if not syncSuspended then
             NetworkOverrideClockTime(currentState.hour, currentState.minute, 0)
-            applyLevels(currentState)
         end
         Wait(1000)
     end
@@ -154,6 +166,7 @@ end)
 
 AddEventHandler('onClientResourceStop', function(resource)
     if resource ~= GetCurrentResourceName() then return end
+    NetworkClearClockTimeOverride()
     ClearOverrideWeather()
     ClearWeatherTypePersist()
     SetRainLevel(0.0)

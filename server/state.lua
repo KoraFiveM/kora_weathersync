@@ -24,6 +24,20 @@ function WeatherSync.publish()
     GlobalState.kora_weathersync = copyState()
 end
 
+local weatherTimer
+
+---Arms one timeout for the next dynamic weather stage, replacing a 1 s poll
+---(F#269). Called whenever nextWeatherAt or dynamicWeather changes.
+local function scheduleWeather()
+    if weatherTimer then Kora.timers.clearTimeout(weatherTimer); weatherTimer = nil end
+    if not WeatherSync.state.dynamicWeather or WeatherSync.weatherInterval <= 0 then return end
+    local delay = math.max(0, math.floor(WeatherSync.nextWeatherAt - GetGameTimer()))
+    weatherTimer = Kora.timers.setTimeout(function()
+        weatherTimer = nil
+        WeatherSync.nextWeatherStage()
+    end, delay)
+end
+
 local function validInteger(value, minimum, maximum)
     return type(value) == 'number' and value == math.floor(value) and value >= minimum and value <= maximum
 end
@@ -45,6 +59,7 @@ function WeatherSync.setWeather(weatherType)
 
     WeatherSync.state.weather = weatherType:upper()
     WeatherSync.nextWeatherAt = GetGameTimer() + WeatherSync.weatherInterval
+    scheduleWeather()
     WeatherSync.publish()
     return true
 end
@@ -78,6 +93,7 @@ function WeatherSync.setDynamicWeather(enabled)
     if enabled == nil then enabled = not WeatherSync.state.dynamicWeather end
     WeatherSync.state.dynamicWeather = enabled == true
     WeatherSync.nextWeatherAt = GetGameTimer() + WeatherSync.weatherInterval
+    scheduleWeather()
     WeatherSync.publish()
     return WeatherSync.state.dynamicWeather
 end
@@ -116,6 +132,7 @@ WeatherSync.state = {
     revision = 0,
 }
 WeatherSync.nextWeatherAt = GetGameTimer() + WeatherSync.weatherInterval
+scheduleWeather()
 WeatherSync.publish()
 
 exports('setWeather', WeatherSync.setWeather)
@@ -208,15 +225,6 @@ CreateThread(function()
                 WeatherSync.state.hour = (WeatherSync.state.hour + 1) % 24
             end
             WeatherSync.publish()
-        end
-    end
-end)
-
-CreateThread(function()
-    while true do
-        Wait(1000)
-        if WeatherSync.state.dynamicWeather and GetGameTimer() >= WeatherSync.nextWeatherAt then
-            WeatherSync.nextWeatherStage()
         end
     end
 end)
