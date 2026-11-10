@@ -83,7 +83,7 @@ test('world commands are registered by the sync resource', function()
     equal(type(commands.blackout), 'function', 'blackout command')
 end)
 
-test('the time command accepts configured presets for qbadmin menu compatibility', function()
+test('the time command accepts configured presets for kora_admin menu compatibility', function()
     commands.time(7, { 'morning' })
     local hour, minute = registeredExports.getTime()
     equal(hour, Config.timePresets.morning.hour, 'preset hour')

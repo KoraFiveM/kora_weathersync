@@ -8,7 +8,7 @@ resource restarts receive the active world immediately.
 
 ## Commands
 
-All commands require the configured `qbcore.admin` tier (console is allowed).
+All commands require the configured `kora_core.admin` tier (console is allowed).
 
 - `/weather <type>`
 - `/freezeweather [true|false]` — controls dynamic weather

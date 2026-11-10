@@ -51,7 +51,7 @@ Config.weatherEffects = {
 Config.command = {
     permission = 'admin', -- kora_lib ACE/Discord permission tier required for world controls
     levels = { 'god', 'admin', 'mod', 'user' }, -- ranked levels understood by kora_lib permissions
-    permissionPrefix = 'qbcore', -- matches this server's `qbcore.admin` ACE configuration
+    permissionPrefix = 'kora_core', -- matches this server's `kora_core.admin` ACE configuration
 }
 
 Config.timePresets = {
