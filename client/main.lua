@@ -2,9 +2,14 @@ local currentState
 local transitionRevision = -1
 local syncSuspended = false
 
--- Effect levels are validated once at load (F#271), so the per-state apply path
--- never asserts and never allocates. A non-numeric or non-finite value falls
--- back to the default with one warning instead of erroring inside a thread.
+RegisterNetEvent('kora_weathersync:client:notify', function(type_, key, ...)
+    Kora.notify.send({
+        title = Kora.lang('title'),
+        type = type_,
+        message = Kora.lang(key, ...),
+    })
+end)
+
 local function level(weatherType, key, value, minimum, maximum, fallback)
     if value == nil then return fallback end
     value = tonumber(value)
@@ -16,7 +21,12 @@ local function level(weatherType, key, value, minimum, maximum, fallback)
     return Kora.util.clamp(value, minimum, maximum)
 end
 
-local defaultEffects = { rainLevel = 0.0, snowLevel = 0.0, gravityLevel = 0, snowTrails = false }
+local defaultEffects = {
+    rainLevel = 0.0,
+    snowLevel = 0.0,
+    gravityLevel = 0,
+    snowTrails = false,
+}
 local effectsByWeather = {}
 for weatherType, configured in pairs(Config.weatherEffects or {}) do
     effectsByWeather[weatherType] = {
@@ -45,9 +55,6 @@ end
 local function persistWeather(weatherType)
     CreateThread(function()
         Wait(math.floor(Config.weatherTransitionSeconds * 1000))
-        -- Clock and blackout updates advance the state revision too.  The
-        -- transition is still current as long as the weather itself did not
-        -- change while its blend timer was running.
         if currentState and not syncSuspended and currentState.weather == weatherType then
             ClearOverrideWeather()
             ClearWeatherTypePersist()
@@ -128,7 +135,10 @@ RegisterNetEvent('qb-weathersync:client:SyncWeather', function(weatherType, blac
     weatherType = weatherType:upper()
     local known = false
     for _, configured in ipairs(Config.weatherTypes) do
-        if configured == weatherType then known = true break end
+        if configured == weatherType then
+            known = true
+            break
+        end
     end
     if not known then return end
     local state = copyOf(currentState)
@@ -138,9 +148,6 @@ RegisterNetEvent('qb-weathersync:client:SyncWeather', function(weatherType, blac
     applyState(state, true)
 end)
 
--- kora_admin reads this at menu-open time.  Exporting the source list keeps its
--- selector aligned with this resource's config (including snow-only/event
--- weather) without making kora_admin start-order dependent on this resource.
 exports('getWeatherTypes', function()
     return Config.weatherTypes
 end)
@@ -152,10 +159,6 @@ CreateThread(function()
         Wait(1000)
     end
 
-    -- NetworkOverrideClockTime is an override rather than a running clock.
-    -- Reapplying it once a second keeps every client aligned between server
-    -- minute updates, including after a player briefly loses scope. Weather
-    -- levels only change with the state, so applyState sets them (F#268).
     while true do
         if not syncSuspended then
             NetworkOverrideClockTime(currentState.hour, currentState.minute, 0)

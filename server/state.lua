@@ -1,6 +1,3 @@
--- The state table is rebuilt for every publish.  GlobalState serializes values
--- by assignment, so mutating a nested table in place would not reliably reach
--- clients or late joiners.
 WeatherSync = WeatherSync or {}
 
 local validWeather = {}
@@ -26,8 +23,6 @@ end
 
 local weatherTimer
 
----Arms one timeout for the next dynamic weather stage, replacing a 1 s poll
----(F#269). Called whenever nextWeatherAt or dynamicWeather changes.
 local function scheduleWeather()
     if weatherTimer then Kora.timers.clearTimeout(weatherTimer); weatherTimer = nil end
     if not WeatherSync.state.dynamicWeather or WeatherSync.weatherInterval <= 0 then return end
@@ -54,7 +49,7 @@ end
 ---@return boolean, string|nil
 function WeatherSync.setWeather(weatherType)
     if not validWeatherType(weatherType) then
-        return false, ('unknown weather type %q'):format(tostring(weatherType))
+        return false, 'unknown_weather_type'
     end
 
     WeatherSync.state.weather = weatherType:upper()
@@ -69,7 +64,7 @@ end
 ---@return boolean, string|nil
 function WeatherSync.setTime(hour, minute)
     if not validInteger(hour, 0, 23) or not validInteger(minute, 0, 59) then
-        return false, 'hour must be 0-23 and minute must be 0-59'
+        return false, 'invalid_time'
     end
 
     WeatherSync.state.hour = hour

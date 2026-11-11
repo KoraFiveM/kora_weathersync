@@ -64,8 +64,8 @@ Config.timePresets = {
 -- Registers this resource-owned configuration with kora_lib without changing its public Config table.
 if Kora and Kora.config and Kora.config.adopt then
     Config.startingWeather = Kora.config.enum(Config.startingWeather, {
-        label = 'Starting weather',
-        description = 'Selects the weather state kora_weathersync applies when the resource starts before any scheduled transition occurs. Only weather names from the authored weather catalogue can be saved.',
+        label = Kora.lang('config_starting_weather'),
+        description = Kora.lang('config_starting_weather_description'),
         options = Config.weatherTypes,
     })
     Config = Kora.config.adopt(Config)
