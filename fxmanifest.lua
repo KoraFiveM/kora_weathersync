@@ -6,7 +6,7 @@ lua54 'yes'
 
 name 'kora_weathersync'
 author 'qbcore2'
-version '1.0.0'
+version '0.1.0'
 description 'Server-authoritative weather, clock, blackout, and environmental-level sync'
 
 dependency 'kora_lib'
