@@ -39,3 +39,5 @@ The legacy server export `qb-weathersync:setBlackout(enabled)` resolves to the s
 - `qb-weathersync:server:RequestStateSync` replies to the calling client only, at most once per 2 seconds per player. A server-side trigger rebroadcasts to everyone.
 - Client `qb-weathersync:client:DisableSync` / `EnableSync` suspend and resume the local weather and clock override (for interior scripts). `SyncTime(base, offset)` and `SyncWeather(name, blackout)` change the local view only until the next server publish; the freeze flag is ignored.
 - `qb-weathersync:server:setWeather`, `setTime`, `toggleBlackout`, `toggleFreezeTime`, `toggleDynamicWeather` are accepted from server resources and the console only. Client sources are ignored, unlike stock, which allows admins.
+
+Full documentation: see [docs/](docs/index.md).
