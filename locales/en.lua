@@ -1,0 +1,26 @@
+return {
+    title = 'Weather',
+    command_weather = 'Set synchronized server weather',
+    command_freeze_weather = 'Toggle or set dynamic weather',
+    command_time = 'Set synchronized server time',
+    command_freeze_time = 'Toggle or set synchronized time freeze',
+    command_blackout = 'Toggle or set artificial-lights blackout',
+    command_preset_time = 'Set time to %02d:%02d',
+    missing_arguments = 'Missing arguments for /%s.',
+    no_permission = 'You do not have permission for this command.',
+
+    weather_set = 'Weather set to %s.',
+    unknown_weather_type = 'Unknown weather type: %s.',
+    expected_boolean = 'Expected true/false, on/off, or 1/0.',
+    dynamic_weather_enabled = 'Dynamic weather enabled.',
+    dynamic_weather_disabled = 'Dynamic weather disabled.',
+    time_set = 'Time set to %02d:%02d.',
+    invalid_time = 'Hour must be 0–23 and minute must be 0–59.',
+    time_frozen = 'Time frozen.',
+    time_running = 'Time running.',
+    blackout_enabled = 'Blackout enabled.',
+    blackout_disabled = 'Blackout disabled.',
+
+    config_starting_weather = 'Starting weather',
+    config_starting_weather_description = 'Selects the weather state applied when the resource starts, before any scheduled transition. Only weather names from the configured catalogue can be saved.',
+}
