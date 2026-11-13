@@ -1,0 +1,26 @@
+return {
+    title = 'Clima',
+    command_weather = 'Definir o clima sincronizado do servidor',
+    command_freeze_weather = 'Alternar ou definir o clima dinâmico',
+    command_time = 'Definir a hora sincronizada do servidor',
+    command_freeze_time = 'Alternar ou congelar a hora sincronizada',
+    command_blackout = 'Alternar ou definir o apagão de luzes artificiais',
+    command_preset_time = 'Definir hora para %02d:%02d',
+    missing_arguments = 'Faltam argumentos para /%s.',
+    no_permission = 'Não tens permissão para usar este comando.',
+
+    weather_set = 'Clima definido para %s.',
+    unknown_weather_type = 'Tipo de clima desconhecido: %s.',
+    expected_boolean = 'Esperado true/false, on/off, ou 1/0.',
+    dynamic_weather_enabled = 'Clima dinâmico ativado.',
+    dynamic_weather_disabled = 'Clima dinâmico desativado.',
+    time_set = 'Hora definida para %02d:%02d.',
+    invalid_time = 'A hora deve ser 0–23 e os minutos 0–59.',
+    time_frozen = 'Hora congelada.',
+    time_running = 'Hora a correr.',
+    blackout_enabled = 'Apagão ativado.',
+    blackout_disabled = 'Apagão desativado.',
+
+    config_starting_weather = 'Clima inicial',
+    config_starting_weather_description = 'Seleciona o estado do clima aplicado quando o recurso inicia, antes de qualquer transição agendada. Apenas nomes de clima do catálogo configurado podem ser guardados.',
+}
