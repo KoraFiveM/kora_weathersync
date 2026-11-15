@@ -14,8 +14,11 @@ local function level(weatherType, key, value, minimum, maximum, fallback)
     if value == nil then return fallback end
     value = tonumber(value)
     if not Kora.util.isFiniteNumber(value) then
-        print(('^3[kora_weathersync] Config.weatherEffects.%s.%s must be a finite number; using %s.^7')
-            :format(weatherType, key, fallback))
+        Kora.logging.warn('config.weather_effect_invalid', 'Weather effect setting must be a finite number; using fallback', {
+            weatherType = weatherType,
+            key = key,
+            fallback = fallback,
+        })
         return fallback
     end
     return Kora.util.clamp(value, minimum, maximum)

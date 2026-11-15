@@ -39,10 +39,13 @@ function SetRainLevel(level) rainLevels[#rainLevels + 1] = level end
 
 -- Same contract as kora_lib's Kora.util (clamp asserts on non-finite input).
 local function finite(v) return type(v) == 'number' and v == v and v > -math.huge and v < math.huge end
+local logged = {}
 Kora = { util = { isFiniteNumber = finite, clamp = function(v, lo, hi)
     assert(finite(v) and finite(lo) and finite(hi) and lo <= hi, 'Kora.util.clamp requires finite bounds')
     return math.max(lo, math.min(hi, v))
-end } }
+end }, logging = setmetatable({}, { __index = function(_, level)
+    return function(event, message, fields) logged[#logged + 1] = { level = level, event = event, message = message, fields = fields }; return true end
+end }) }
 dofile('config.lua')
 -- A non-finite level must be rejected once at load, not assert in a thread (F#271).
 Config.weatherEffects.TESTNAN = { rainLevel = 0 / 0, snowLevel = 5, gravityLevel = 'x' }
@@ -55,6 +58,15 @@ end
 
 test('invalid weather effects are validated once at load (F#271)', function()
     if not loadOk then error(loadErr) end
+end)
+
+test('invalid weather effects are logged as warnings with context in fields', function()
+    equal(#logged >= 2, true, 'NaN rain level and a non-numeric gravity level are each reported')
+    for _, call in ipairs(logged) do
+        equal(call.level, 'warn', 'level')
+        equal(call.event, 'config.weather_effect_invalid', 'event name')
+        equal(call.fields.weatherType, 'TESTNAN', 'weather type in fields, not the message')
+    end
 end)
 
 publish('CLEAR', 1)
