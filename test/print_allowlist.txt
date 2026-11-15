@@ -1,0 +1,2 @@
+# path:reason
+server/commands.lua:operator command replies for src 0 (console) whose purpose is to print to the server console
