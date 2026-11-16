@@ -1,0 +1,26 @@
+return {
+    title = "El tiempo",
+    command_weather = "Establecer tiempo del servidor sincronizado",
+    command_freeze_weather = "Toggle or set dynamic weather",
+    command_time = "Establecer tiempo de servidor sincronizado",
+    command_freeze_time = "Toggle or set synchronized time freeze",
+    command_blackout = "Toggle o conjunto de luces artificiales apagón",
+    command_preset_time = "Compruebe el tiempo a %02d:%02d",
+    missing_arguments = "Faltan argumentos para /%s.",
+    no_permission = "No tienes permiso para este comando.",
+
+    weather_set = "El tiempo está en %s.",
+    unknown_weather_type = "Tipo de clima desconocido: %s.",
+    expected_boolean = "Se espera verdadero/falso, on/off, o 1/0.",
+    dynamic_weather_enabled = "Clima dinámico habilitado.",
+    dynamic_weather_disabled = "Tiempo dinámico desactivado.",
+    time_set = "Tiempo fijado para %02d:%02d.",
+    invalid_time = "La hora debe ser 0–23 y el minuto debe ser 0–59.",
+    time_frozen = "Tiempo congelado.",
+    time_running = "Hora de correr.",
+    blackout_enabled = "Blackout habilitado.",
+    blackout_disabled = "Desactivado.",
+
+    config_starting_weather = "Tiempo de inicio",
+    config_starting_weather_description = "Selecciona el estado del tiempo aplicado cuando el recurso comienza, antes de cualquier transición programada. Sólo se pueden guardar los nombres meteorológicos del catálogo configurado.",
+}

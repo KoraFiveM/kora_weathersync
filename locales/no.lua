@@ -1,0 +1,26 @@
+return {
+    title = "Været",
+    command_weather = "Sett synkronisert servervær",
+    command_freeze_weather = "Bytt eller sett dynamisk vær",
+    command_time = "Sett synkronisert servertid",
+    command_freeze_time = "Slå av eller sett synkronisert tidsfrysing",
+    command_blackout = "Slå av eller sett kunstig lys",
+    command_preset_time = "Sett tid til %02d:%02d",
+    missing_arguments = "Manglende argumenter for /%s.",
+    no_permission = "Du har ikke tillatelse til denne kommandoen.",
+
+    weather_set = "Været satt til %s.",
+    unknown_weather_type = "Ukjend værtype: %s.",
+    expected_boolean = "Forventet sann/falsk, av/på eller 1/0.",
+    dynamic_weather_enabled = "Dynamisk vær aktivert.",
+    dynamic_weather_disabled = "Dynamisk vær deaktivert.",
+    time_set = "Tid satt til %02d:%02d.",
+    invalid_time = "timen må være 0–23 og minuttet må være 0–59.",
+    time_frozen = "Tiden er frossen.",
+    time_running = "Tiden løper.",
+    blackout_enabled = "Blackout aktivert.",
+    blackout_disabled = "Blackout deaktivert.",
+
+    config_starting_weather = "Startvær",
+    config_starting_weather_description = "Velger værtilstanden som brukes når ressursen starter, før enhver planlagt overgang. Bare værnavn fra konfigurert katalog kan lagres.",
+}

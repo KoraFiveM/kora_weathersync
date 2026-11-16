@@ -1,0 +1,26 @@
+return {
+    title = "Погода",
+    command_weather = "Настроювання синхронізованої погоди сервера",
+    command_freeze_weather = "Перемикач або установка динамічної погоди",
+    command_time = "Налаштування синхронізації часу сервера",
+    command_freeze_time = "Переключити або встановити синхронізацію часу",
+    command_blackout = "Перемикач або набір штучних ліхтарів",
+    command_preset_time = "Час встановлення до %02d:%02d",
+    missing_arguments = "Мої аргументи для /%s.",
+    no_permission = "Ви не маєте дозволу на цю команду.",
+
+    weather_set = "Погода в %s.",
+    unknown_weather_type = "Невідомий тип погоди: %s.",
+    expected_boolean = "Очікується true/false, on/off, або 1/0.",
+    dynamic_weather_enabled = "Увімкнути динамічну погоду.",
+    dynamic_weather_disabled = "Динамічні відключення погоди.",
+    time_set = "Набір часу до %02d:%02d.",
+    invalid_time = "Година повинна бути 0–23 і хвилина повинна бути 0–59.",
+    time_frozen = "Час заморожений.",
+    time_running = "Час роботи.",
+    blackout_enabled = "Увімкніть Blackout.",
+    blackout_disabled = "Відключення Blackout.",
+
+    config_starting_weather = "Погода",
+    config_starting_weather_description = "Вибирає погодний стан, який застосовується при запуску ресурсу, перед будь-яким регулярним переходом. Зберігати можна тільки погодні імена з налаштованого каталогу.",
+}

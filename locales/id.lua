@@ -1,0 +1,26 @@
+return {
+    title = "Cuaca",
+    command_weather = "Atur cuaca server yang disinkronkan",
+    command_freeze_weather = "Jungkitkan atau atur cuaca dinamis",
+    command_time = "Set sinkronisasi waktu server",
+    command_freeze_time = "Jungkitkan atau atur waktu yang disinkronkan membeku",
+    command_blackout = "Jungkitkan atau setel pemadaman pribadi-lampu",
+    command_preset_time = "Atur waktu ke %02d: %02d",
+    missing_arguments = "Hilang argumen untuk / %s.",
+    no_permission = "Anda tidak memiliki izin untuk perintah ini.",
+
+    weather_set = "Cuaca diatur untuk %s.",
+    unknown_weather_type = "Tipe cuaca tak dikenal: %s.",
+    expected_boolean = "Diduga true / false, on / off, atau 1 / 0.",
+    dynamic_weather_enabled = "Cuaca dinamis diaktifkan.",
+    dynamic_weather_disabled = "Cuaca dinamis dinonaktifkan.",
+    time_set = "%02d: %02d.",
+    invalid_time = "Jam harus 0- 23 dan menit harus 0- 59.",
+    time_frozen = "Waktu membeku.",
+    time_running = "Waktu berjalan.",
+    blackout_enabled = "Pemadaman diaktifkan.",
+    blackout_disabled = "Blackout dinonaktifkan.",
+
+    config_starting_weather = "Mulai cuaca",
+    config_starting_weather_description = "Memilih kondisi cuaca yang diterapkan ketika sumber daya dimulai, sebelum transisi yang dijadwalkan. Hanya nama cuaca dari katalog yang dikonfigurasi yang dapat disimpan.",
+}

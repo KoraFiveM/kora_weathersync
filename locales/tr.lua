@@ -1,0 +1,26 @@
+return {
+    title = "Hava",
+    command_weather = "Set senkronize server hava durumu",
+    command_freeze_weather = "Toggle veya dinamik hava durumu ayarlamak",
+    command_time = "Set senkronize server time",
+    command_freeze_time = "Toggle veya senkronize zamanı dondurdu",
+    command_blackout = "Kaçmak veya yapay ışıklar karaout",
+    command_preset_time = "%02d:%02d",
+    missing_arguments = "Eksik argümanlar /%s.",
+    no_permission = "Bu komut için izniniz yok.",
+
+    weather_set = "Havalar %s'ye ayarlanıyor.",
+    unknown_weather_type = "Bilinmeyen hava türü: %s.",
+    expected_boolean = "Gerçek/false, on/off veya 1/0.",
+    dynamic_weather_enabled = "Dinamik hava etkinleştirildi.",
+    dynamic_weather_disabled = "Dinamik hava devreleri.",
+    time_set = "Zaman %02d:%02d'ye ayarlandı.",
+    invalid_time = "Saat 0-23 ve dakika 0-59 olmalıdır.",
+    time_frozen = "Zaman donmuş.",
+    time_running = "Zaman çalışır.",
+    blackout_enabled = "Blackout etkinleştirildi.",
+    blackout_disabled = "Blackout Toilet.",
+
+    config_starting_weather = "Havadan Başlangıç",
+    config_starting_weather_description = "Kaynak başladığında uygulanan hava durumunu seçin, önceden planlanan geçişten önce. Sadece yapılandırılmış katalogdan hava isimleri kurtarılabilir.",
+}

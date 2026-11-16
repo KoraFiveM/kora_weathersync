@@ -1,0 +1,26 @@
+return {
+    title = "Wetter",
+    command_weather = "Set synchronisiertes Serverwetter",
+    command_freeze_weather = "Umschalten oder dynamisches Wetter einstellen",
+    command_time = "Set synchronisierte Serverzeit",
+    command_freeze_time = "Umschalten oder Synchronisieren des Zeiteinfrierens",
+    command_blackout = "Schalten oder Setzen von Kunstlicht Blackout",
+    command_preset_time = "Zeit auf %02d einstellen:%02d",
+    missing_arguments = "Fehlende Argumente für /%s.",
+    no_permission = "Sie haben keine Erlaubnis für diesen Befehl.",
+
+    weather_set = "Wetter auf %s eingestellt.",
+    unknown_weather_type = "Unbekannter Wettertyp: %s.",
+    expected_boolean = "Erwartet true/false, on/off, oder 1/0.",
+    dynamic_weather_enabled = "Dynamisches Wetter ermöglicht.",
+    dynamic_weather_disabled = "Dynamisches Wetter deaktiviert.",
+    time_set = "Zeit eingestellt auf %02d:%02d.",
+    invalid_time = "Stunde muss 0-23 und Minute muss 0-59 sein.",
+    time_frozen = "Uhrzeit eingefroren.",
+    time_running = "Laufzeit.",
+    blackout_enabled = "Blackout aktiviert.",
+    blackout_disabled = "Blackout deaktiviert.",
+
+    config_starting_weather = "Startwetter",
+    config_starting_weather_description = "Wählen Sie den Wetterzustand aus, der beim Start der Ressource vor einem geplanten Übergang angewendet wird. Nur Wetternamen aus dem konfigurierten Katalog können gespeichert werden.",
+}

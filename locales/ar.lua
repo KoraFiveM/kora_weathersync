@@ -1,0 +1,26 @@
+return {
+    title = "الطقس",
+    command_weather = "طقس خادم متزامن",
+    command_freeze_weather = "مكافحة الطقس الدينامي",
+    command_time = "تحديد وقت الخادم المتزامن",
+    command_freeze_time = "تجميد الوقت المتزامن",
+    command_blackout = "نضال أو نضوج الأضواء الاصطناعية",
+    command_preset_time = "تحديد الوقت إلى %02d:%02d",
+    missing_arguments = "/ %s.",
+    no_permission = "ليس لديك إذن لهذا الأمر",
+
+    weather_set = "Weather set to %s.",
+    unknown_weather_type = "Unknown weather type: %s.",
+    expected_boolean = "expected true/false, on/off, or 1/0.",
+    dynamic_weather_enabled = "الطقس الديناميكي مكّن.",
+    dynamic_weather_disabled = "عطل الطقس الديناميكي",
+    time_set = "Time set to %02d:%02d.",
+    invalid_time = "يجب أن تكون الساعة 0-23 و دقيقة يجب أن تكون 0-59",
+    time_frozen = "الوقت متجمد",
+    time_running = "الوقت يمضي",
+    blackout_enabled = "مُمَكّن من التسلل.",
+    blackout_disabled = "مُعاقين",
+
+    config_starting_weather = "بدء الطقس",
+    config_starting_weather_description = "ويختار حالة الطقس عندما يبدأ المورد قبل أي انتقال مقرر. فقط أسماء الطقس من الفهرس المكون يمكن إنقاذها",
+}

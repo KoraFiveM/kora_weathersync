@@ -1,0 +1,26 @@
+return {
+    title = "מזג אוויר",
+    command_weather = "המונחים: server Weather",
+    command_freeze_weather = "לטבול או להגדיר מזג אוויר דינמי",
+    command_time = "זמן שרת סינכרוני",
+    command_freeze_time = "כוונו או קבעו זמן מסונכרן להקפיא",
+    command_blackout = "משקפי שמש או אור מלאכותי",
+    command_preset_time = "זמן ל- %02dQ: %02dQ",
+    missing_arguments = "המונחים: %s",
+    no_permission = "אין לך רשות לפקודה זו.",
+
+    weather_set = "מזג אוויר מוגדר %sQ.",
+    unknown_weather_type = "סוג מזג אוויר לא ידוע: %s",
+    expected_boolean = "מצפה אמיתי / False, על / off, או 1 / 0.",
+    dynamic_weather_enabled = "מזג אוויר דינמי אפשר.",
+    dynamic_weather_disabled = "מזג אוויר דינמי",
+    time_set = "זמן מוגדר %02dQ: %02dQ.",
+    invalid_time = "השעה צריכה להיות 0-23 ושעה חייבת להיות 0-59.",
+    time_frozen = "הזמן קפוא.",
+    time_running = "הזמן רץ.",
+    blackout_enabled = "Blackout אפשר",
+    blackout_disabled = "שחור ללא מוגבלויות",
+
+    config_starting_weather = "מזג אוויר מתחיל",
+    config_starting_weather_description = "בחר את מצב מזג האוויר החל כאשר המשאב מתחיל, לפני כל מעבר מתוכנן. רק שמות מזג אוויר מקטלוג מוגדר ניתן להציל.",
+}

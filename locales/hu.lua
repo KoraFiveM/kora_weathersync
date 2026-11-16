@@ -1,0 +1,26 @@
+return {
+    title = "Időjárás",
+    command_weather = "A szinkronizált szerver időjárásának beállítása",
+    command_freeze_weather = "Dinamikus időjárás bekapcsolása vagy beállítása",
+    command_time = "Szinkronizált kiszolgálási idő beállítása",
+    command_freeze_time = "A szinkronizált idő leállítása",
+    command_blackout = "Műholdfény-áramszünet bekapcsolása vagy beállítása",
+    command_preset_time = "Az idő beállítása %02d: %02d",
+    missing_arguments = "Hiányzó érvek / %s.",
+    no_permission = "Nincs engedélye erre a parancsra.",
+
+    weather_set = "Időjárás %s-ra.",
+    unknown_weather_type = "Ismeretlen időjárási típus: %s.",
+    expected_boolean = "Várható igaz / hamis, be / ki, vagy 1 / 0.",
+    dynamic_weather_enabled = "Dinamikus időjárás engedélyezve.",
+    dynamic_weather_disabled = "Dinamikus időjárás kikapcsolva.",
+    time_set = "Idő beállítva %02d: %02d-ra.",
+    invalid_time = "Az óra 0-23, a perc pedig 0-59.",
+    time_frozen = "Az idő megfagyott.",
+    time_running = "Időfutás.",
+    blackout_enabled = "Áramszünet engedélyezve.",
+    blackout_disabled = "Áramszünet kikapcsolva.",
+
+    config_starting_weather = "Az időjárás kezdete",
+    config_starting_weather_description = "Kiválasztja az erőforrás kezdetekor, a tervezett átmenet előtt alkalmazott időjárási állapotot. Csak a beállított katalógusból származó időjárási nevek menthetők meg.",
+}

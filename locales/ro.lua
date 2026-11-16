@@ -1,0 +1,26 @@
+return {
+    title = "Vremea",
+    command_weather = "Setează vremea sincronizată a serverului",
+    command_freeze_weather = "Comută sau stabilește vremea dinamică",
+    command_time = "@ info: whatsthis",
+    command_freeze_time = "Comută sau setează înghețarea timpului sincronizat",
+    command_blackout = "Comută sau setează pana de curent artificial",
+    command_preset_time = "Setează timpul către %02d:%02d",
+    missing_arguments = "Argumente lipsă pentru /%s.",
+    no_permission = "Nu aveți permisiunea pentru această comandă.",
+
+    weather_set = "Set meteo la %s.",
+    unknown_weather_type = "Tipul de vreme necunoscut: %s.",
+    expected_boolean = "A se vedea nota de subsol 1.",
+    dynamic_weather_enabled = "Vremea dinamică activată.",
+    dynamic_weather_disabled = "Vremea dinamică e dezactivată.",
+    time_set = "Timpul setat pentru %02d:%02d.",
+    invalid_time = "Ora trebuie să fie 0 ",
+    time_frozen = "Timpul a îngheţat.",
+    time_running = "Timpul trece.",
+    blackout_enabled = "Pană de curent activată.",
+    blackout_disabled = "Pană de curent dezactivată.",
+
+    config_starting_weather = "Vremea de pornire",
+    config_starting_weather_description = "Selectează starea vremii aplicată atunci când resursa începe, înainte de orice tranziție programată. Numai numele de vreme din catalogul configurat pot fi salvate.",
+}

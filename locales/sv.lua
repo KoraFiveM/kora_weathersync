@@ -1,0 +1,26 @@
+return {
+    title = "Vädret",
+    command_weather = "Ställ synkroniserat serverväder",
+    command_freeze_weather = "Växla eller sätt dynamiskt väder",
+    command_time = "Ställ synkroniserad servertid",
+    command_freeze_time = "Växla eller ställa synkroniserad tidsfrysning",
+    command_blackout = "Växla eller sätt artificiella ljus blackout",
+    command_preset_time = "Ange tid till %02d:%02d",
+    missing_arguments = "Saknar argument för /%s.",
+    no_permission = "Du har inte tillstånd för detta kommando.",
+
+    weather_set = "Vädret inställt på %s.",
+    unknown_weather_type = "Okänd vädertyp: %s.",
+    expected_boolean = "Förväntad sann/falsk, on/off eller 1/0.",
+    dynamic_weather_enabled = "Dynamiskt väder aktiverat.",
+    dynamic_weather_disabled = "Dynamiskt väder inaktiverat.",
+    time_set = "Tid inställd på %02d:%02d.",
+    invalid_time = "Timmen måste vara 0-23 och minut måste vara 0-59.",
+    time_frozen = "Tid fryst.",
+    time_running = "Time running.",
+    blackout_enabled = "Blackout aktiverad.",
+    blackout_disabled = "Blackout inaktiverad.",
+
+    config_starting_weather = "Starta väder",
+    config_starting_weather_description = "Väljer väderstatus som tillämpas när resursen startar, innan någon schemalagd övergång. Endast vädernamn från den konfigurerade katalogen kan sparas.",
+}

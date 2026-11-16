@@ -1,0 +1,26 @@
+return {
+    title = "Počasí",
+    command_weather = "Nastavit synchronizované počasí serveru",
+    command_freeze_weather = "Zapnout nebo nastavit dynamické počasí",
+    command_time = "Nastavit synchronizovaný čas serveru",
+    command_freeze_time = "Přepnout nebo nastavit synchronizované zmrazení času",
+    command_blackout = "Zapnout nebo nastavit automatický výpadek světel",
+    command_preset_time = "Nastavit čas na %02d: %02d",
+    missing_arguments = "Chybějící argumenty pro / %s.",
+    no_permission = "Nemáte k tomu povolení.",
+
+    weather_set = "Počasí nastaveno na %s.",
+    unknown_weather_type = "Neznámý typ počasí: %s.",
+    expected_boolean = "Očekávaná pravda / lež, zapnuto / vypnuto nebo1 /0.",
+    dynamic_weather_enabled = "Dynamické počasí povoleno.",
+    dynamic_weather_disabled = "Dynamické počasí vypnuto.",
+    time_set = "Čas nastaven na %02d: %02d.",
+    invalid_time = "Hodina musí být 0-23 a minuta musí být 0-59.",
+    time_frozen = "Čas se zastavil.",
+    time_running = "Čas běží.",
+    blackout_enabled = "Výpadek povolen.",
+    blackout_disabled = "Výbuch zakázán.",
+
+    config_starting_weather = "Začátek počasí",
+    config_starting_weather_description = "Vybere stav počasí použitý při spuštění zdroje, před plánovaným přechodem. Z nakonfigurovaného katalogu lze uložit pouze názvy počasí.",
+}
