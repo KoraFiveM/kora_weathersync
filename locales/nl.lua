@@ -1,4 +1,3 @@
-
 return {
     title = 'Weer',
     command_weather = 'Stel het gesynchroniseerde serverweer in',
