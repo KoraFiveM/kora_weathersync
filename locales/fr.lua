@@ -1,0 +1,26 @@
+return {
+    title = "Météo",
+    command_weather = "Définir la météo du serveur synchronisé",
+    command_freeze_weather = "Basculer ou régler le temps dynamique",
+    command_time = "Définir l'heure du serveur synchronisé",
+    command_freeze_time = "Régler ou régler le gel du temps synchronisé",
+    command_blackout = "Basculer ou mettre des feux artificiels noircissement",
+    command_preset_time = "Régler l'heure à %02d:%02d",
+    missing_arguments = "arguments manquants pour /%s.",
+    no_permission = "Vous n'avez pas la permission pour cette commande.",
+
+    weather_set = "Réglé sur %s.",
+    unknown_weather_type = "Type de temps inconnu: %s.",
+    expected_boolean = "Vrai/faux, en marche/arrêt, ou 1/0.",
+    dynamic_weather_enabled = "Temps dynamique activé.",
+    dynamic_weather_disabled = "La météo dynamique est désactivée.",
+    time_set = "Réglage de l'heure à %02d:%02d.",
+    invalid_time = "L'heure doit être 0–23 et la minute doit être 0–59.",
+    time_frozen = "Temps gelé.",
+    time_running = "Temps écoulé.",
+    blackout_enabled = "Blackout activé.",
+    blackout_disabled = "Blackout désactivé.",
+
+    config_starting_weather = "Météo de départ",
+    config_starting_weather_description = "Sélectionne l'état météorologique appliqué lorsque la ressource démarre, avant toute transition programmée. Seuls les noms météorologiques du catalogue configuré peuvent être enregistrés.",
+}

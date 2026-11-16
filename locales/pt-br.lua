@@ -1,0 +1,26 @@
+return {
+    title = "Tempo",
+    command_weather = "Ajuste o tempo do servidor sincronizado.",
+    command_freeze_weather = "Alternar ou definir o tempo dinâmico",
+    command_time = "Definir tempo sincronizado do servidor",
+    command_freeze_time = "Alternar ou definir tempo sincronizado congelamento",
+    command_blackout = "Alternar ou definir luzes artificiais apagão",
+    command_preset_time = "Defina tempo para %02d:%02d",
+    missing_arguments = "Argumentos desaparecidos para %s.",
+    no_permission = "Você não tem permissão para este comando.",
+
+    weather_set = "Tempo definido para %s.",
+    unknown_weather_type = "Tipo de tempo desconhecido: %s.",
+    expected_boolean = "Espera-se verdadeiro/falso, ligado/desligado, ou 1/0.",
+    dynamic_weather_enabled = "Tempo dinâmico ativado.",
+    dynamic_weather_disabled = "Tempo dinâmico desativado.",
+    time_set = "Tempo definido para %02d:%02d.",
+    invalid_time = "A hora deve ser 0–23 e o minuto deve ser 0–59.",
+    time_frozen = "Tempo congelado.",
+    time_running = "Tempo correndo.",
+    blackout_enabled = "Apagão ativado.",
+    blackout_disabled = "Apagão desativado.",
+
+    config_starting_weather = "Começando o tempo",
+    config_starting_weather_description = "Seleciona o estado meteorológico aplicado quando o recurso começa, antes de qualquer transição programada. Só nomes meteorológicos do catálogo configurado podem ser salvos.",
+}

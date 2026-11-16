@@ -1,0 +1,26 @@
+return {
+    title = "天気の天気",
+    command_weather = "同期サーバーの天気を設定する",
+    command_freeze_weather = "動的天候をトグルまたはセットする",
+    command_time = "同期サーバー時刻を設定する",
+    command_freeze_time = "同期時間フリーズをトグルまたはセットする",
+    command_blackout = "トグルまたはセット 人工的なライト blackout",
+    command_preset_time = "%02dに置く時間:%02d",
+    missing_arguments = "/%s の引数を欠く。",
+    no_permission = "このコマンドの許可はありません。",
+
+    weather_set = "%s にセットされる天候。",
+    unknown_weather_type = "未知の気象タイプ:%s.",
+    expected_boolean = "true/false、オン/オフ、または1/0を期待。",
+    dynamic_weather_enabled = "ダイナミックな天候が実現しました。",
+    dynamic_weather_disabled = "動的天候が無効になっています。",
+    time_set = "%02d:%02dに置かれる時間。",
+    invalid_time = "時間は0–23で、0–59分でなければなりません。",
+    time_frozen = "凍結する時間。",
+    time_running = "タイムランニング。",
+    blackout_enabled = "ブラックアウトを有効にしました。",
+    blackout_disabled = "停電は無効になっています。",
+
+    config_starting_weather = "出発の天候",
+    config_starting_weather_description = "スケジュールされた移行の前に、リソースが起動したときに適用される気象状態を選択します。 設定したカタログから気象名のみ保存できます。",
+}

@@ -1,0 +1,26 @@
+return {
+    title = "Weather",
+    command_weather = "Sünkroniseeritud serveri ilma määramine",
+    command_freeze_weather = "Dünaamilise ilma lülitamine või seadistamine",
+    command_time = "Sünkroniseeritud serveri aja määramine",
+    command_freeze_time = "Lülitab või määrab sünkroniseeritud aja külmutamise",
+    command_blackout = "Kunstvalguse väljalülitamine või seadistamine",
+    command_preset_time = "Aja määramine %02d:%02d",
+    missing_arguments = "/%s puuduvad argumendid.",
+    no_permission = "Teil ei ole selle käsu jaoks luba.",
+
+    weather_set = "Ilm on määratud %s-le.",
+    unknown_weather_type = "Tundmatu ilmatüüp: %s.",
+    expected_boolean = "Oodatav tõene/vale, sisse/väljas või 1/0.",
+    dynamic_weather_enabled = "Dünaamiline ilm lubatud.",
+    dynamic_weather_disabled = "Dünaamiline ilm on välja lülitatud.",
+    time_set = "Aeg %02d:%02d.",
+    invalid_time = "Tund peab olema 0–23 ja minut 0–59.",
+    time_frozen = "Aeg külmunud.",
+    time_running = "Aeg jookseb.",
+    blackout_enabled = "Elektrikatkestus lubatud.",
+    blackout_disabled = "Elektrikatkestus keelatud.",
+
+    config_starting_weather = "Algusilmad",
+    config_starting_weather_description = "Valib ressursi käivitumisel rakendatava ilmaoleku enne mis tahes plaanilist üleminekut. Salvestada saab ainult seadistatud kataloogi ilmanimesid.",
+}

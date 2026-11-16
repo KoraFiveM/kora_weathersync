@@ -1,0 +1,26 @@
+return {
+    title = "Lagay ng Panahon",
+    command_weather = "Magtakda ng sabay na panahon ng server",
+    command_freeze_weather = "Togle o magtakda ng dinamikong lagay ng panahon",
+    command_time = "Magtakda ng sabay na panahon ng server",
+    command_freeze_time = "Togle o magtakda ng sabay na oras na nagyeyelo",
+    command_blackout = "Togle o set artipisyal-lights blackout",
+    command_preset_time = "Magtakda ng panahon sa %02d:%02d",
+    missing_arguments = "Nawawalang mga argumento para sa /%s.",
+    no_permission = "Wala kang pahintulot para sa utos na ito.",
+
+    weather_set = "Ang lagay ng panahon ay itinakda sa %s.",
+    unknown_weather_type = "Unknown weather type: %s.",
+    expected_boolean = "Inaasahang totoo/mali, on/off, o 1/0.",
+    dynamic_weather_enabled = "Dahil sa masamang lagay ng panahon.",
+    dynamic_weather_disabled = "Dynamic weather may kapansanan.",
+    time_set = "Oras na itinakda sa %02d:%02d.",
+    invalid_time = "Ang oras ay dapat 0–23 at minuto ay 0–59.",
+    time_frozen = "Ang panahon ay nagyelo.",
+    time_running = "Tumatakbo ang panahon.",
+    blackout_enabled = "Nakakayanan ito ng blackout.",
+    blackout_disabled = "May kapansanan si Blackout.",
+
+    config_starting_weather = "Nagsisimulang lagay ng panahon",
+    config_starting_weather_description = "Pinipili ang lagay ng panahon na gagamitin kapag nagsimula na ang likas na yaman, bago pa magsimula ang anumang nakaiskedyul na pagbabago. Tanging ang mga pangalan lamang ng lagay ng panahon mula sa nakaayos na katalogo ang maililigtas.",
+}

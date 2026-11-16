@@ -1,0 +1,26 @@
+return {
+    title = "Vejret",
+    command_weather = "Indstil synkroniseret servervejr",
+    command_freeze_weather = "Slå eller sæt dynamisk vejr til / fra",
+    command_time = "Indstil synkroniseret servertid",
+    command_freeze_time = "Slå eller sæt synkroniseret tidsfrysning til / fra",
+    command_blackout = "Slå eller sæt kunstige lys blackout",
+    command_preset_time = "Indstil tid til %02d: %02d",
+    missing_arguments = "Manglende argumenter for / %s.",
+    no_permission = "Du har ikke tilladelse til denne kommando.",
+
+    weather_set = "Vejret indstillet til %s.",
+    unknown_weather_type = "Ukendt vejrtype: %s.",
+    expected_boolean = "Forventet sand / falsk, tændt / slukket, eller 1 / 0.",
+    dynamic_weather_enabled = "Dynamisk vejr aktiveret.",
+    dynamic_weather_disabled = "Dynamisk vejr deaktiveret.",
+    time_set = "Tid indstillet til %02d: %02d.",
+    invalid_time = "Time skal være 0-23 og minut skal være 0-59.",
+    time_frozen = "Tid frosset.",
+    time_running = "Tiden løber.",
+    blackout_enabled = "Blackout aktiveret.",
+    blackout_disabled = "Blackout deaktiveret.",
+
+    config_starting_weather = "Startvejr",
+    config_starting_weather_description = "Vælger vejrtilstand anvendt, når ressourcen starter, før nogen planlagt overgang. Kun vejrnavne fra det indstillede katalog kan gemmes.",
+}

@@ -1,0 +1,26 @@
+return {
+    title = "Vreme",
+    command_weather = "Nastavi sinhronizirano vreme strežnika",
+    command_freeze_weather = "Preklopi ali nastavi dinamično vreme",
+    command_time = "Nastavi sinhroniziran čas strežnika",
+    command_freeze_time = "Preklopi ali nastavi sinhronizirano zamrznitev časa",
+    command_blackout = "Preklopi ali nastavi izklop umetnih luči",
+    command_preset_time = "Nastavi čas na %02d:%02d",
+    missing_arguments = "Manjkajoči argumenti za /%s.",
+    no_permission = "Nimate dovoljenja za ta ukaz.",
+
+    weather_set = "Vreme nastavljeno na %s.",
+    unknown_weather_type = "Neznan vremenski tip: %s.",
+    expected_boolean = "Pričakovana resničnost/napaka, v/izklop ali 1/0.",
+    dynamic_weather_enabled = "Dinamično vreme omogočeno.",
+    dynamic_weather_disabled = "Dinamično vreme onemogočeno.",
+    time_set = "Čas nastavljen na %02d:%02d.",
+    invalid_time = "Ura mora biti 0–23, minuta pa 0–59.",
+    time_frozen = "Čas zmrznjen.",
+    time_running = "Čas teče.",
+    blackout_enabled = "Izklop omogočen.",
+    blackout_disabled = "Izklop onemogočen.",
+
+    config_starting_weather = "Začetno vreme",
+    config_starting_weather_description = "Izbere vremensko stanje, uporabljeno ob zagonu vira, pred vsakim načrtovanim prehodom. Shranijo se lahko samo vremenska imena iz nastavljenega kataloga.",
+}

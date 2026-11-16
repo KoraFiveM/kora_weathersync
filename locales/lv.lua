@@ -1,0 +1,26 @@
+return {
+    title = "Laikapstākļi",
+    command_weather = "Iestatīt sinhronizētus servera laika apstākļus",
+    command_freeze_weather = "Pārslēgt vai iestatīt dinamiskus laika apstākļus",
+    command_time = "Iestatīt sinhronizētu servera laiku",
+    command_freeze_time = "Pārslēgt vai iestatīt sinhronizētu laika iesaldēšanu",
+    command_blackout = "Slēgt vai uzstādīt mākslīgu gaismas noklusējumu",
+    command_preset_time = "Iestatiet laiku uz %02d:%02d",
+    missing_arguments = "Trūkst argumentu par /%s.",
+    no_permission = "Jums nav atļauju šai komandai.",
+
+    weather_set = "Laikapstākļi iestatīti uz %s.",
+    unknown_weather_type = "Nezināms laikapstākļu tips: %s.",
+    expected_boolean = "Paredzamā patiesā/kļūda, ieslēgta/izslēgta vai 1/0.",
+    dynamic_weather_enabled = "Dinamiskie laikapstākļi ieslēgti.",
+    dynamic_weather_disabled = "Dinamisks laikapstākļu traucējums.",
+    time_set = "Laiks iestatīts uz %02d:%02d.",
+    invalid_time = "Stundai jābūt 0-23 un minūtei jābūt 0-59.",
+    time_frozen = "Laiks sasalst.",
+    time_running = "Laiks skrien.",
+    blackout_enabled = "Opcijas",
+    blackout_disabled = "Frekvence atslēgta.",
+
+    config_starting_weather = "Sākuma laiks",
+    config_starting_weather_description = "Izvēlas resursa palaišanas laiku pirms plānotās pārejas. Saglabājami tikai laikapstākļu nosaukumi no konfigurētā kataloga.",
+}

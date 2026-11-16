@@ -1,0 +1,26 @@
+return {
+    title = "Pogoda",
+    command_weather = "Ustaw synchronizację pogody serwera",
+    command_freeze_weather = "Włączenie / wyłączenie dynamicznej pogody",
+    command_time = "Ustaw zsynchronizowany czas serwera",
+    command_freeze_time = "Przełączanie lub ustawianie synchronicznego zamrożenia czasu",
+    command_blackout = "Przełączanie lub ustawianie świateł artystycznych",
+    command_preset_time = "Ustaw czas na %02d: %02d",
+    missing_arguments = "Brak argumentów dla / %s.",
+    no_permission = "Nie masz pozwolenia na to polecenie.",
+
+    weather_set = "Pogoda ustawiona na %s.",
+    unknown_weather_type = "Nieznany typ pogody: %s.",
+    expected_boolean = "Oczekiwany true / false, on / off, lub 1 / 0.",
+    dynamic_weather_enabled = "Dynamiczna pogoda włączona.",
+    dynamic_weather_disabled = "Dynamiczna pogoda wyłączona.",
+    time_set = "Czas ustalony na %02d: %02d.",
+    invalid_time = "Godzina musi być 0- 23, a minuta - 0- 59.",
+    time_frozen = "Czas zamrożony.",
+    time_running = "Czas ucieka.",
+    blackout_enabled = "Zaciemnienie włączone.",
+    blackout_disabled = "Zaciemnienie wyłączone.",
+
+    config_starting_weather = "Pogoda startowa",
+    config_starting_weather_description = "Wybiera stan pogodowy zastosowany przy uruchomieniu zasobów przed planowaną zmianą. Można zapisać tylko nazwy pogody z skonfigurowanego katalogu.",
+}
