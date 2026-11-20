@@ -15,7 +15,7 @@ return {
     dynamic_weather_enabled = 'Dynamic weather enabled.',
     dynamic_weather_disabled = 'Dynamic weather disabled.',
     time_set = 'Time set to %02d:%02d.',
-    invalid_time = 'Hour must be 0–23 and minute must be 0–59.',
+    invalid_time = 'Hour must be 0-23 and minute must be 0-59.',
     time_frozen = 'Time frozen.',
     time_running = 'Time running.',
     blackout_enabled = 'Blackout enabled.',
